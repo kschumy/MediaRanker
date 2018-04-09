@@ -8,6 +8,8 @@ In contrast to previous projects, instead of implementing a pre-defined spec you
 
 This is an individual, [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) project.
 
+Due EOD Friday April 13th
+
 ## Learning Goals
 
 The purpose of this assignment is to reinforce the following concepts:
