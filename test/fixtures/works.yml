@@ -1,47 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-# one: {}
-# # column: value
-# #
-# two: {}
-# # column: value
 givingtree:
   title: The Giving Tree
   category: book
-  publication_year: 1964
+  # publication_year: 1964
   description: The most giving tree of all.
-  created_by: Creator McCreator
+  creator: Creator McCreator
 hpbook:
   title: Harry Potter and the Philosopher's Stone
   category: book
-  publication_year: 1997
+  # publication_year: 1997
   description: The start of the best series ever.
-  created_by: Name McName
+  creator: Name McName
 hpmovie:
   title: Harry Potter and the Philosopher's Stone
   category: movie
-  publication_year: 2001
+  # publication_year: 2001
   description: The first movie in the series.
-  created_by: Ada Lovelace
+  creator: Ada Lovelace
 damn:
   title: Damn
   category: albumn
-  publication_year: 2017
+  # publication_year: 2017
   description:
-  created_by: Grace Hooper, the Creator
+  creator: Grace Hooper, the Creator
 thank:
   title: Thank Me Later
   category: albumn
   publication_year:
   description: Wheelchair Jimmy made it big
-  created_by: Foobarbaz
+  creator: Foobarbaz
 bundo:
   title: Day in the Life of Marlon Bundo
   category: book
-  publication_year: 2018
+  # publication_year: 2018
   description: A bunny falls in love
-  created_by:
+  creator:
