@@ -22,7 +22,15 @@
       </ul>
     </nav>
 
+    <main>
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <section class="callout <%= name %>">
+            <p><%= message %></p>
+          </section>
+          <% end %>
+      </section>
     <%= yield %>
-
+    </main>
   </body>
 </html>
