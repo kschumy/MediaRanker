@@ -4,8 +4,44 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+# one: {}
+# # column: value
+# #
+# two: {}
+# # column: value
+givingtree:
+  title: The Giving Tree
+  category: book
+  publication_year: 1964
+  description: The most giving tree of all.
+  created_by: Creator McCreator
+hpbook:
+  title: Harry Potter and the Philosopher's Stone
+  category: book
+  publication_year: 1997
+  description: The start of the best series ever.
+  created_by: Name McName
+hpmovie:
+  title: Harry Potter and the Philosopher's Stone
+  category: movie
+  publication_year: 2001
+  description: The first movie in the series.
+  created_by: Ada Lovelace
+damn:
+  title: Damn
+  category: albumn
+  publication_year: 2017
+  description:
+  created_by: Grace Hooper, the Creator
+thank:
+  title: Thank Me Later
+  category: albumn
+  publication_year:
+  description: Wheelchair Jimmy made it big
+  created_by: Foobarbaz
+bundo:
+  title: Day in the Life of Marlon Bundo
+  category: book
+  publication_year: 2018
+  description: A bunny falls in love
+  created_by:
