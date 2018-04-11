@@ -35,3 +35,15 @@ bundo:
   publication_year: 2018-03-22
   description: A bunny falls in love
   # creator:
+minimal:
+  title: Minial Info Movie
+  category: movie
+  # publication_year: 
+  # description:
+  # creator:
+novotesbook:
+  title: No One Likes This Book
+  category: book
+  publication_year: 2017-03-22
+  description: unloved
+  creator: unclaimed

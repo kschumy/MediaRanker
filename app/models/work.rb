@@ -20,7 +20,7 @@ class Work < ApplicationRecord
 	private
 
 	def calculate_vote_count
-		return votes.size
+		return self.votes.count
 	end
 
 	def squish_title_and_description

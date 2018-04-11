@@ -1,4 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 grace:
   name: Grace Hooper
 ada:
@@ -11,5 +10,11 @@ kathryn:
   name: Kathryn Johnson
 lovelace:
   name: Ada Lovelace
-noupvotesuser:
+noupvotesuserone:
   name: Hates Everything
+noupvotesusertwo:
+  name: Second Hater
+noupvotesuserthree:
+  name: Third Hater
+noupvotesuserfour:
+  name: Forth Hater

@@ -37,6 +37,9 @@ ada_damn:
 kathryn_damn:
   user: kathryn
   work: damn
+z_minimal:
+  user: z
+  work: minimal
 
 #
 # grace:
