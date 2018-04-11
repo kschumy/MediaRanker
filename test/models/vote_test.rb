@@ -38,5 +38,16 @@ describe Vote do
 			vote.valid?.must_equal false
 		end
 
+		it "only allow non-duplicate votes by a user" do
+			user = users(:grace)
+			Vote.create(work: works(:novotesbook), user: user)
+			dup_vote = Vote.create(work: works(:novotesbook), user: user)
+			dup_vote.valid?.must_equal false
+
+			non_dup_vote = Vote.create(work: works(:novotesbooktwo), user: user)
+			non_dup_vote.valid?.must_equal true
+		end
+
+
 	end
 end

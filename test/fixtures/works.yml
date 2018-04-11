@@ -1,4 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 givingtree:
   title: The Giving Tree
   category: book
@@ -38,7 +37,7 @@ bundo:
 minimal:
   title: Minial Info Movie
   category: movie
-  # publication_year: 
+  # publication_year:
   # description:
   # creator:
 novotesbook:
@@ -47,3 +46,9 @@ novotesbook:
   publication_year: 2017-03-22
   description: unloved
   creator: unclaimed
+novotesbooktwo:
+  title: Apparently a Terrle Book
+  category: book
+  publication_year: 2017-01-22
+  description: No one likes this book
+  # creator:
