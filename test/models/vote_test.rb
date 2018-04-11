@@ -24,14 +24,14 @@ describe Vote do
 			proc { vote.work = "foo" }.must_raise ActiveRecord::AssociationTypeMismatch
 		end
 
-		# TODO: bad??
+		# TODO: shitty??
 		it "does not allow nil user" do
 			vote = votes(:grace_givingtree)
 			vote.user = nil
 			vote.valid?.must_equal false
 		end
 
-		# TODO: bad??
+		# TODO: shitty??
 		it "does not allow nil work" do
 			vote = votes(:grace_givingtree)
 			vote.work = nil

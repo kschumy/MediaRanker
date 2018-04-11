@@ -3,6 +3,8 @@ class Work < ApplicationRecord
 
 	before_validation :remove_white_space_from_title_description_creator
 
+	# validates :title, :valid_string
+
 	validates :title, :length => { minimum: 1 }, :uniqueness => {
 		:scope => :category, :case_sensitive => false, :message => "fucked up title"}
 

@@ -2,6 +2,7 @@ require "test_helper"
 
 describe Work do
 
+# VALID ========================================================================
   describe 'valid' do
 
     # Validate title -----------------------------------------------------------
@@ -195,6 +196,7 @@ describe Work do
 
   end
 
+# RELATIONS ====================================================================
   describe 'relations' do
 
     it "has a votes" do
@@ -216,6 +218,7 @@ describe Work do
 
   end
 
+# GET VOTE COUNT ===============================================================
   describe 'get_vote_count' do
 
     it 'responds to get_vote_count' do
