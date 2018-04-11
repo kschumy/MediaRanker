@@ -19,13 +19,13 @@ hpmovie:
   creator: Ada Lovelace
 damn:
   title: Damn
-  category: albumn
+  category: album
   publication_year: 2017-02-03
   description:
   creator: Grace Hooper, the Creator
 thank:
   title: Thank Me Later
-  category: albumn
+  category: album
   publication_year:
   description: Wheelchair Jimmy made it big
   creator: Foobarbaz
