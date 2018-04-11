@@ -18,6 +18,7 @@ describe 'valid' do
 
     invalid_new_work_one = Work.create(title: "foo    bar   baz", category: "book")
     invalid_new_work_one.valid?.must_equal false
+    invalid_new_work_one.errors.must_include :title
 
     invalid_new_work_two = Work.create(title: "   foo bar baz", category: "book")
     invalid_new_work_two.valid?.must_equal false
@@ -26,6 +27,7 @@ describe 'valid' do
   it "must have a title of at least one char" do
     new_work = Work.create(title: "", category: "book")
     new_work.valid?.must_equal false
+    new_work.errors.must_include :title
 
     new_work = Work.create(title: "         ", category: "book")
     new_work.valid?.must_equal false
@@ -38,6 +40,8 @@ describe 'valid' do
     new_work = Work.create(title: works(:hpbook).title, category:
       works(:hpbook).category)
     new_work.valid?.must_equal false
+    new_work.errors.must_include :title
+    new_work.errors.messages[:title].must_equal ["fucked up title"]
   end
 
   it "must have a unique, case-insensitive title" do
@@ -47,6 +51,7 @@ describe 'valid' do
       works(:hpbook).category)
 
     new_work.valid?.must_equal false
+    new_work.errors.must_include :title
   end
 
   # Validate category ----------------------------------------------------------
@@ -125,28 +130,22 @@ describe 'valid' do
     work.valid?.must_equal false
   end
 
-
-
 end
 
   describe 'relations' do
 
-   # it "has a votes" do
-   #   work = works(:hpbook)
-   #   work.votes.must_respond_to :last
-   # end
+   it "has a votes" do
+     work = works(:hpbook)
+     work.must_respond_to :votes
+   end
 
    it 'updates with votes' do
      work = works(:hpbook)
      test_vote = Vote.create work: works(:hpbook), user: users(:ada)
      work.votes.last.must_equal test_vote
    end
-  end
-
-  describe "validate" do
 
   end
-
 
   describe 'get_vote_count' do
 

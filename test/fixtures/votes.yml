@@ -1,11 +1,90 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+grace_givingtree:
+  user: grace
+  work: givingtree
+grace_hpbook:
+  user: grace
+  work: hpbook
+ada_hpbook:
+  user: ada
+  work: hpbook
+z_hpbook:
+  user: z
+  work: hpbook
+mcuser_hpbook:
+  user: z
+  work: hpbook
+ada_hpmovie:
+  user: ada
+  work: hpmovie
+z_hpmovie:
+  user: z
+  work: hpmovie
+mcuser_hpmovie:
+  user: z
+  work: hpmovie
+grace_hpmovie:
+  user: grace
+  work: hpmovie
+lovelace_hpmovie:
+  user: lovelace
+  work: hpmovie
+lovelace_damn:
+  user: lovelace
+  work: damn
+ada_damn:
+  user: ada
+  work: damn
+kathryn_damn:
+  user: kathryn
+  work: damn
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
 #
-# one: {}
-# # column: value
+# grace:
+#   name: Grace Hooper
+# ada:
+#   name: ada
+# z:
+#   name: z
+# mcuser:
+#   name: User McUser
+# kathryn:
+#   name: Kathryn Johnson
+# lovelace:
+#   name: Ada Lovelace
 # #
-# two: {}
-# # column: value
+# givingtree:
+#   title: The Giving Tree
+#   category: book
+#   publication_year: 1964-02-02
+#   description: The most giving tree of all.
+#   creator: Creator McCreator
+# hpbook:
+#   title: Harry Potter and the Philosopher's Stone
+#   category: book
+#   publication_year: 1997-07-03
+#   description: The start of the best series ever.
+#   creator: Name McName
+# hpmovie:
+#   title: Harry Potter and the Philosopher's Stone
+#   category: movie
+#   publication_year: 2001-10-27
+#   description: The first movie in the series.
+#   creator: Ada Lovelace
+# damn:
+#   title: Damn
+#   category: album
+#   publication_year: 2017-02-03
+#   # description:
+#   creator: Grace Hooper, the Creator
+# thank:
+#   title: Thank Me Later
+#   category: album
+#   # publication_year:
+#   description: Wheelchair Jimmy made it big
+#   creator: Foobarbaz
+# bundo:
+#   title: Day in the Life of Marlon Bundo
+#   category: book
+#   publication_year: 2018-03-22
+#   description: A bunny falls in love
+#   # creator:

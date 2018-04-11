@@ -3,5 +3,13 @@ grace:
   name: Grace Hooper
 ada:
   name: ada
-onechar:
+z:
   name: z
+mcuser:
+  name: User McUser
+kathryn:
+  name: Kathryn Johnson
+lovelace:
+  name: Ada Lovelace
+noupvotesuser:
+  name: Hates Everything
