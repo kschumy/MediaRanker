@@ -141,15 +141,15 @@ end
 
    it 'updates with votes' do
      work = works(:hpbook)
-     num_of_original_votes = work.votes.size
-     puts work.votes.size
+     num_of_original_votes = work.votes.count
+     puts work.votes.count
      original_votes_array = work.votes
      new_vote = Vote.create work: works(:hpbook), user: User.create(name: "Newbie")
 
      # Overkill but just making sure
      work.votes.last.must_equal new_vote
      work.votes.must_equal original_votes_array << new_vote
-     work.votes.size.must_equal num_of_original_votes + 1
+     work.votes.count.must_equal num_of_original_votes + 1
    end
 
   end
@@ -163,28 +163,28 @@ end
    it 'returns the number of votes' do
      # new_work_wtf = Work.create title: "wtf is up with this", category: "book"
      new_work_wtf = works(:novotesbook)
-
-     puts "?????????"
-     puts new_work_wtf.votes.count
+     #
+     # puts "?????????"
+     # puts new_work_wtf.votes.count
      new_work_wtf.get_vote_count.must_equal 0
-     puts "******"
-     puts new_work_wtf.votes.inspect
-     puts "******"
+     # puts "******"
+     # puts new_work_wtf.votes.inspect
+     # puts "******"
 
      Vote.create work: works(:novotesbook), user: users(:noupvotesuserone)
      Vote.create work: works(:novotesbook), user: users(:noupvotesusertwo)
      Vote.create work: works(:novotesbook), user: users(:noupvotesuserthree)
      Vote.create work: works(:novotesbook), user: users(:noupvotesuserfour)
 
-     puts "-------"
-     puts new_work_wtf.votes.inspect
-     puts "-------"
+     # puts "-------"
+     # puts new_work_wtf.votes.inspect
+     # puts "-------"
      # count_before.must_equal 0
      new_work_wtf.get_vote_count.must_equal 4
    end
 
    # it "resets" do
-   #   # users(:noupvotesuserone).votes.size.must_equal 0
+   #   # users(:noupvotesuserone).votes.count.must_equal 0
    # end
   end
 

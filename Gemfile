@@ -70,3 +70,8 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
 end
+
+# Added by me
+group :development do
+  gem 'bullet'
+end
