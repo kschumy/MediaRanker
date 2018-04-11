@@ -4,24 +4,11 @@ describe Work do
 
   describe 'valid' do
 
-    # Validate title -------------------------------------------------------------
+    # Validate title -----------------------------------------------------------
     it "must have a title" do
       work = works(:hpbook)
       work.title = nil
       work.valid?.must_equal false
-    end
-
-    it "removes strips white space from title" do
-      valid_new_work = Work.create(title: "foo bar         baz", category: "book")
-      valid_new_work.valid?.must_equal true
-      valid_new_work.title.must_equal "foo bar baz"
-
-      invalid_new_work_one = Work.create(title: "foo    bar   baz", category: "book")
-      invalid_new_work_one.valid?.must_equal false
-      invalid_new_work_one.errors.must_include :title
-
-      invalid_new_work_two = Work.create(title: "   foo bar baz", category: "book")
-      invalid_new_work_two.valid?.must_equal false
     end
 
     it "must have a title of at least one char" do
@@ -52,6 +39,19 @@ describe Work do
 
       new_work.valid?.must_equal false
       new_work.errors.must_include :title
+    end
+
+    it "removes strips white space from title" do
+      valid_new_work = Work.create(title: "foo bar         baz", category: "book")
+      valid_new_work.valid?.must_equal true
+      valid_new_work.title.must_equal "foo bar baz"
+
+      invalid_new_work_one = Work.create(title: "foo    bar   baz", category: "book")
+      invalid_new_work_one.valid?.must_equal false
+      invalid_new_work_one.errors.must_include :title
+
+      invalid_new_work_two = Work.create(title: "   foo bar baz", category: "book")
+      invalid_new_work_two.valid?.must_equal false
     end
 
     # Validate category ----------------------------------------------------------
@@ -130,6 +130,69 @@ describe Work do
       work.valid?.must_equal false
     end
 
+    # Validate description -----------------------------------------------------
+    it "has a description" do
+      work = Work.create(title: "foo", description: "hello", category: "book")
+      work.valid?.must_equal true
+      work.description.must_equal "hello"
+    end
+
+    it "removes white space from description" do
+      work = Work.create(title: "foo", description: "    ", category: "book")
+      work.valid?.must_equal true
+      work.description.must_be_nil
+
+      work.description = "    world"
+      work.valid?.must_equal true
+      work.description.must_equal "world"
+
+      work.description = "hello    world"
+      work.valid?.must_equal true
+      work.description.must_equal "hello world"
+
+      work.description = ""
+      work.valid?.must_equal true
+      work.description.must_be_nil
+    end
+
+    it "allow for description to be nil" do
+      work = Work.create(title: "foo", category: "book")
+      work.valid?.must_equal true
+      work.description.must_be_nil
+    end
+
+    # Validate creator ---------------------------------------------------------
+    it "has a creator" do
+      work = Work.create(title: "foo", creator: "Bob", category: "book")
+      work.valid?.must_equal true
+      work.creator.must_equal "Bob"
+    end
+
+    it "removes strips white space from creator" do
+      work = Work.create(title: "foo", creator: "    ", category: "book")
+      work.creator = "    "
+      work.valid?.must_equal true
+      work.creator.must_be_nil
+
+      work.creator = "    Builder"
+      work.valid?.must_equal true
+      work.creator.must_equal "Builder"
+
+      work.creator = "Bob    the    Builder  "
+      work.valid?.must_equal true
+      work.creator.must_equal "Bob the Builder"
+
+      work.creator = ""
+      work.valid?.must_equal true
+      work.creator.must_be_nil
+    end
+
+    it "allow for creator to be nil" do
+      work = Work.create(title: "foo", category: "book")
+      work.valid?.must_equal true
+      work.creator.must_be_nil
+    end
+
   end
 
   describe 'relations' do
@@ -142,9 +205,8 @@ describe Work do
     it 'updates with votes' do
       work = works(:hpbook)
       num_of_original_votes = work.votes.count
-      puts work.votes.count
       original_votes_array = work.votes
-      new_vote = Vote.create work: works(:hpbook), user: User.create(name: "Newbie")
+      new_vote = Vote.create work: works(:hpbook), user: User.create(name: "foo")
 
       # Overkill but just making sure
       work.votes.last.must_equal new_vote
