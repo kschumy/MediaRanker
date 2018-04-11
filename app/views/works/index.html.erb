@@ -12,7 +12,7 @@
 	<tbody>
 		<% @works.each do |work|  %>
 	    <tr>
-	      <td><%= work.votes %></td>
+	      <td><%= work.get_vote_count %></td>
 	      <td><%= work.title %></td>
 	      <td><%= work.creator %></td>
 	      <td><%= work.publication_year %></td>
