@@ -1,6 +1,4 @@
 class Work < ApplicationRecord
-	# CATEGORIES = %w[movie book album]
-
 	has_many :votes
 
 	before_validation :remove_white_space_from_title_description_creator
@@ -27,10 +25,10 @@ class Work < ApplicationRecord
 
 	def self.get_sorted(category, num: nil)
 		valid_category_and_num_or_error(category, num)
-		works_in_order = Work.where(category: category).order(votes_count: :desc)
-		return num.nil? ? works_in_order : works_in_order.first(num)
+		return get_sorted_in_category(category, num)
+		# works_in_order = Work.where(category: category).order(votes_count: :desc)
+		# return num.nil? ? works_in_order : works_in_order.first(num)
 	end
-
 
 	private
 
@@ -39,6 +37,12 @@ class Work < ApplicationRecord
 			raise ArgumentError.new("Invalid category #{category} or num #{num}")
 		end
 	end
+
+	def self.get_sorted_in_category(category, num)
+		works_in_order = Work.where(category: category).order(votes_count: :desc)
+		return num.nil? ? works_in_order : works_in_order.first(num)
+	end
+
 
 	def calculate_vote_count
 		return self.votes.count

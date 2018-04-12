@@ -16,6 +16,41 @@
  *= require foundation_and_overrides
  */
 
+
+ * {
+	list-style-image: none;
+	list-style-type: disc;
+	font-family: 'Gudea', sans-serif;
+
+  /* list-style-position: outside; */
+}
+
+ .button {
+	 color: #fefefe;
+	 background-color: #26a69a;
+	 transition: background-color 0.25s ease-out 0s, color 0.25s ease-out 0s;
+
+ }
+
+.header {
+  max-width: 100%;
+  background-color: #B2DFDB;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 10px;
+  padding: 25px 20px 10px 20px;
+}
+
+.tagline-in-header {
+	color: #ffffff;
+}
+
+.site-name-in-header {
+	color: #FF5722;
+	padding-right: 25px;
+	margin-right: 15px;
+	border-right: white 2px solid;
+}
+
  /* colors!
  #000000
  #0a0a0a
