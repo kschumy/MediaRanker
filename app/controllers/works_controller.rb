@@ -23,7 +23,7 @@ class WorksController < ApplicationController
 
 	def cast_vote
 		if current_user
-			Vote.create!(work: @work, user: current_user)
+			Vote.create(work: @work, user: User.find(session[:user_id]))
 			flash[:success] = "Vote cast!"
 		else
 			flash[:alert] = "You must log in to do that"

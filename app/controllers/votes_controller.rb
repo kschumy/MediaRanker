@@ -10,6 +10,13 @@ class VotesController < ApplicationController
 		# redirect_to vote_path(params[:id])
 	end
 
+	# Creates a new vote
+	def new
+		raise
+		# Vote.create(vote_params)
+		# redirect_to vote_path(params[:id])
+	end
+
 	private
 
 	def work_params

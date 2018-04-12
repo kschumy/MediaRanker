@@ -1,11 +1,10 @@
 <h2>Log In</h2>
 
-<form>
-
-  <label for="username">Username</label>
-  <input type="text" name="username" id="username" />
-  <input type="submit" class="button" value="Submit">
-</form>
+<%= form_for @user, url: login_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
 
 
 <h4>A note about logging in</h4>

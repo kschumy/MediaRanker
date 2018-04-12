@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
 	def create
-		@user = current_user #User.find_by name: params[:user][:name]
+		@user = User.find_by name: params[:user][:name]
 		if @user
 			session[:user_id] = @user.id
 			flash[:success] = "Welcome back #{@user.name}"
@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
 
 	def new
 		@user = User.new
+		# @book.author = Author.find(params[:author_id])
+		# @action = author_books_path(params[:author_id])
 	end
 
 	def destroy
