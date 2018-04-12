@@ -19,6 +19,10 @@ class Work < ApplicationRecord
 		return calculate_vote_count
 	end
 
+	def get_publication_year
+		return publication_year.year if !publication_year.nil?
+	end
+
 	private
 
 	def calculate_vote_count

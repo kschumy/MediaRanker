@@ -20,6 +20,11 @@ class WorksController < ApplicationController
 	 	redirect_to work_path(params[:id])
 	end
 
+	# def cast_vote
+	# 	@work = Work.find_by(id: params[:id])
+	#
+	# end
+
 	private
 
 	def work_params

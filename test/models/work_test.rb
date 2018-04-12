@@ -238,5 +238,32 @@ describe Work do
     end
 
   end
+  # GET PUBLICATION YEAR =======================================================
+
+  describe "get_publication_year" do
+    it "responds to get_publication_year" do
+      works(:hpbook).must_respond_to :get_publication_year
+    end
+
+    it "responds to get_publication_year" do
+      year_published = works(:hpbook).publication_year.year
+      works(:hpbook).get_publication_year.must_equal year_published
+    end
+
+    it "updates with publication_year changes" do
+      work = works(:hpbook)
+      original_year = work.get_publication_year
+
+      work.publication_year -= 1.year
+      work.get_publication_year.must_equal original_year - 1
+    end
+
+    it "can be nil" do
+      work = works(:hpbook)
+      work.publication_year = nil
+      work.get_publication_year.must_be_nil
+    end
+
+  end
 
 end

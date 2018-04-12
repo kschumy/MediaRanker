@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 	root to: 'main#index'
 	resources :users, only: [:index, :show, :create]
 	resources :works, except: [:destroy]
-	resources :votes, only: [:create]
+	# resources :votes, only: [:create]
+	post "/works/:id/vote", to: "works#cast_vote", as: "cast_vote"
 end

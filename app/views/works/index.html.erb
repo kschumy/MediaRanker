@@ -15,8 +15,8 @@
 	      <td><%= work.get_vote_count %></td>
 	      <td><%= work.title %></td>
 	      <td><%= work.creator %></td>
-	      <td><%= work.publication_year %></td>
-	      <td><%= link_to "Upvote" %></td>
+	      <td><%= work.get_publication_year %></td>
+	      <td><%= link_to "Upvote", cast_vote_path %></td>
 	    </tr>
 		<% end %>
   </tbody>
