@@ -23,23 +23,38 @@ class Work < ApplicationRecord
 		return publication_year.year if !publication_year.nil?
 	end
 
-	def self.get_sorted(category, num: nil)
-		valid_category_and_num_or_error(category, num)
-		return get_sorted_in_category(category, num)
+	def self.get_top_in_category_sorted(work_category, num: nil)
+		valid_category_and_num_or_error(work_category, num)
+		return get_sorted_in_category(work_category, num)
 		# works_in_order = Work.where(category: category).order(votes_count: :desc)
 		# return num.nil? ? works_in_order : works_in_order.first(num)
 	end
 
-	private
-
-	def self.valid_category_and_num_or_error(category, num)
-		if !CATEGORIES.include?(category) || (!num.nil? && !num.is_a?(Integer))
-			raise ArgumentError.new("Invalid category #{category} or num #{num}")
+	def self.get_top_in_all_categories_sorted(num: nil)
+		valid_num_or_error(num)
+		top_works = {}
+		CATEGORIES.each do |work_category|
+			top_works[work_category] = get_sorted_in_category(work_category, num)
 		end
+		return top_works
 	end
 
-	def self.get_sorted_in_category(category, num)
-		works_in_order = Work.where(category: category).order(votes_count: :desc)
+
+
+	private
+
+	def self.valid_category_and_num_or_error(work_category, num)
+		raise ArgumentError.new("Invalid category") if !CATEGORIES.include?(work_category)
+		valid_num_or_error(num)
+	end
+
+	def self.valid_num_or_error(num)
+		raise ArgumentError.new("Invalid number") if !num.nil? && !num.is_a?(Integer)
+	end
+
+
+	def self.get_sorted_in_category(work_category, num)
+		works_in_order = Work.where(category: work_category).order(votes_count: :desc)
 		return num.nil? ? works_in_order : works_in_order.first(num)
 	end
 

@@ -65,6 +65,21 @@
 // 1. Global
 // ---------
 
+// #000000
+// #0a0a0a
+// #26a69a
+// #555555
+// #6a8e46
+// #888888
+// #b2dfdb
+// #b40000
+// #cacaca
+// #eeeeee
+// #fefefe
+// #ff5722
+// #ffffff
+
+
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
@@ -80,9 +95,15 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
+$orange: #ff5722;
+$other-orange: #EB6237;
+$dark-red: #b40000;
+$teal: #26a69a;
+$light-teal: #b2dfdb;
+$mossy-green: #6a8e46;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'Gudea', sans-seri;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -133,7 +154,7 @@ $block-grid-max: 8;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+$font-family-monospace: inherit;
 $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
@@ -282,7 +303,7 @@ $button-font-family: inherit;
 $button-padding: 0.85em 1em;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
-$button-background: $primary-color;
+$button-background: $teal;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
@@ -866,4 +887,3 @@ $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
-
