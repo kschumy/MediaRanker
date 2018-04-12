@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+	before_action :find_work, only:[:show, :edit, :update, :destroy, :cast_vote]
 
 	def index
 		@works = Work.all
@@ -20,10 +21,21 @@ class WorksController < ApplicationController
 	 	redirect_to work_path(params[:id])
 	end
 
-	# def cast_vote
-	# 	@work = Work.find_by(id: params[:id])
-	#
-	# end
+	def cast_vote
+		if current_user
+			Vote.create!(work: @work, user: current_user)
+			flash[:success] = "Vote cast!"
+		else
+			flash[:alert] = "You must log in to do that"
+		end
+		redirect_to works_path
+	end
+
+	def update
+	end
+
+	def destroy
+	end
 
 	private
 
