@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+	# CATEGORIES = %w[movie book album]
+
 	has_many :votes
 
 	before_validation :remove_white_space_from_title_description_creator
@@ -8,7 +10,7 @@ class Work < ApplicationRecord
 	validates :title, :length => { minimum: 1 }, :uniqueness => {
 		:scope => :category, :case_sensitive => false, :message => "fucked up title"}
 
-	validates :category, :inclusion => { :in => %w[movie book album] }
+	validates :category, :inclusion => { :in => CATEGORIES }
 
 	validates :publication_year, inclusion: { :in => (Date.new(0000,1,1)..Date.today) },
 		allow_nil: true
@@ -23,9 +25,20 @@ class Work < ApplicationRecord
 		return publication_year.year if !publication_year.nil?
 	end
 
+	def self.get_sorted(category, num: nil)
+		valid_category_and_num_or_error(category, num)
+		works_in_order = Work.where(category: category).order(votes_count: :desc)
+		return num.nil? ? works_in_order : works_in_order.first(num)
+	end
 
 
 	private
+
+	def self.valid_category_and_num_or_error(category, num)
+		if !CATEGORIES.include?(category) || (!num.nil? && !num.is_a?(Integer))
+			raise ArgumentError.new("Invalid category #{category} or num #{num}")
+		end
+	end
 
 	def calculate_vote_count
 		return self.votes.count
