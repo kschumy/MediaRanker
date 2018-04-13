@@ -22,7 +22,6 @@ class SessionsController < ApplicationController
 	end
 
 	def new
-		raise
 		@user = User.new
 		# @book.author = Author.find(params[:author_id])
 		# @action = author_books_path(params[:author_id])

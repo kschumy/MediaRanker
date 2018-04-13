@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-	before_action :find_work, only:[:show, :edit, :update, :destroy, :cast_vote]
+	# before_action :find_work, only:[:show, :edit, :update, :destroy, :cast_vote]
 
 	def index
 		@works = Work.order(votes_count: :desc)
@@ -11,8 +11,15 @@ class WorksController < ApplicationController
 
 	# Creates a new work
 	def create
-		@work = Work.create(work_params)
-		redirect_to work_path(params[:id])
+		@work = Work.new(work_params)
+		if @work.save
+			flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+			redirect_to work_path(id: @work.id)
+		else
+			flash[:alert] = @work.errors
+			redirect_back(fallback_location: works_path)
+
+		end
 	end
 
 	def new

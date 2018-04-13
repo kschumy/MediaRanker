@@ -13,7 +13,7 @@ class VotesController < ApplicationController
 		if current_user
 			@vote = Vote.new(work: @work, user: User.find(session[:user_id]))
 			if @vote.save
-				flash[:success] = "Vote cast! for #{@work.title}"
+				flash[:success] = "Vote cast for #{@work.title}!"
 			else
 				flash[:alert] = @vote.errors
 			end

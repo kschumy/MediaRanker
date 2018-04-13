@@ -20,7 +20,7 @@
       <nav>
         <a class="button" href="/">View top media</a>
         <a class="button" href="/works">View all media</a>
-        <a class="button" href="/works/new">Add a new work</a>
+        <%= link_to "Add a work", new_work_path, class: "button" %>
         <a class="button" href="/users">View all users</a>
         <% @site_user = User.find_by(id: current_user) %>
         <% if !@site_user  %>
@@ -32,20 +32,27 @@
       </nav>
     </header>
 
-    <main>
+    <section class="alert-section">
       <% flash.each do |name, message| %>
-        <section class="callout <%= name %>">
-          <% if message.respond_to?(:each) %>
-            <ul>
-              <% flash[:alert].each do |field, message| %>
-                <li><strong><%= field %>: </strong><%= message.pop %></li>
-              <% end %>
-            </ul>
-          <% else %>
-            <p><%= message %></p>
-          <% end %>
+
+        <% if message.respond_to?(:each) %>
+          <section class="status <%= name %>">
+
+          <h3>An error has occured.</h3>
+          <ul>
+            <% flash[:alert].each do |field, message| %>
+              <li><%= field %>: <%= message.is_a?(String) ? message : message.pop %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <h3><%= message %></h3>
+        <% end %>
         </section>
       <% end %>
+    </section>
+
+    <main>
+
       <%= yield %>
     </main>
   </body>
