@@ -39,6 +39,15 @@ class Work < ApplicationRecord
 		return top_works
 	end
 
+	def self.get_top_overall
+		# return Work.order(votes_count: :desc).first
+		top_work = nil
+		CATEGORIES.each do |work_category|
+			top_in_category = get_sorted_in_category(work_category, 1).pop
+			top_work = top_in_category if top_work.nil? || top_in_category.get_vote_count > top_work.get_vote_count
+		end
+		return top_work
+	end
 
 
 	private
@@ -64,7 +73,7 @@ class Work < ApplicationRecord
 	end
 
 	def remove_white_space_from_title_description_creator
-		[self.title, self.description, self.creator].each do |work_attribute|
+		[title, description, creator].each do |work_attribute|
 			work_attribute.squish! if !work_attribute.nil?
 		end
 	end
