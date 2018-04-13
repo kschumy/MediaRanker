@@ -21,19 +21,31 @@
       <a class="button" href="/works">View all media</a>
       <a class="button" href="/works/new">Add a new work</a>
       <a class="button" href="/users">View all users</a>
-      <a class="button right-nav-button" href="/login">Log In</a>
+      <% if !current_user %>
+        <a class="button right-nav-button" href="/login">Log In</a>
+      <% else %>
+        <a class="button right-nav-button" href="/user/id">Logged in as <%= User.find_by(id: current_user).name %></a>
+        <a class="button right-nav-button" rel="nofollow" data-method="delete" href="/login">Log Out</a>
+      <% end %>
+
     </nav>
   </header>
 
     <main>
-      <section class="flash">
-        <% flash.each do |name, message| %>
-          <section class="callout <%= name %>">
+      <% flash.each do |name, message| %>
+        <section class="callout <%= name %>">
+          <% if message.respond_to?(:each) %>
+            <ul>
+              <% flash[:alert].each do |field, message| %>
+                <li><strong><%= field %>: </strong><%= message.pop %></li>
+              <% end %>
+            </ul>
+          <% else %>
             <p><%= message %></p>
-          </section>
           <% end %>
-      </section>
-    <%= yield %>
+        </section>
+      <% end %>
+      <%= yield %>
     </main>
   </body>
 </html>

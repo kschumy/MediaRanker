@@ -47,6 +47,7 @@ class Work < ApplicationRecord
 		return top_work
 	end
 
+
 	private
 
 	def self.valid_category_and_num_or_error(work_category, num)
