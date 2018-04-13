@@ -21,7 +21,12 @@
       <a class="button" href="/works">View all media</a>
       <a class="button" href="/works/new">Add a new work</a>
       <a class="button" href="/users">View all users</a>
-      <a class="button right-nav-button" href="/login">Log In</a>
+      <% if !session[:user] %>
+        <a class="button right-nav-button" href="/login">Log In</a>
+      <% else %>
+        <a class="button right-nav-button" href="/user/id">Logged in as session[:user]</a>
+        <a href="/login/delete" class="button right-nav-button" >Log Out</a>
+      <% end %>
     </nav>
   </header>
 
@@ -29,10 +34,25 @@
       <section class="flash">
         <% flash.each do |name, message| %>
           <section class="callout <%= name %>">
+            <% if name == "alert" %>
+              <ul>
+                <% flash[:alert].each do |field, message| %>
+                  <li><strong><%= field %>: </strong><%= message.pop %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p><%= message %></p>
+            <% end %>
+          </section>
+        <% end %>
+      </section>
+      <!-- <section class="flash">
+        <% flash.each do |name, message| %>
+          <section class="callout <%= name %>">
             <p><%= message %></p>
           </section>
           <% end %>
-      </section>
+      </section> -->
     <%= yield %>
     </main>
   </body>

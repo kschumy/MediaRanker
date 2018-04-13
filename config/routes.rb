@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-	root to: 'main#index'
+	root 'main#index'
 
 	get '/login', to: 'sessions#new', as: 'login_form'
 	post '/login', to: 'sessions#create', as: 'login'
 	delete '/login', to: 'sessions#destroy', as: 'logout'
 
+	resources :main, only: [:index]
+	# resources :works#, except: [:destroy]
+
+	resources :works do #, except: [:destroy]
+		resources :votes, only: [:create]
+	end
+
 	resources :users, only: [:index, :show, :create]
-	resources :works#, except: [:destroy]
-	resources :votes, only: [:new, :create, :destroy]
-	get '/works/:id/vote', to: 'works#cast_vote', as: 'cast_vote'
+
+	# post '/works/id/vote', to: 'votes#create', as: 'cast_vote'
 end

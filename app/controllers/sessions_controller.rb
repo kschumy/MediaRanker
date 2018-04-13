@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
 	def create
-		@user = User.find_by name: params[:user][:name]
+		@user = User.find_by(name: params[:user][:name])
 		if @user
 			session[:user_id] = @user.id
 			flash[:success] = "Welcome back #{@user.name}"
@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
+		raise
 		session[:user_id] = nil
 		flash[:success] = "You logged out"
 		redirect_to root_path
