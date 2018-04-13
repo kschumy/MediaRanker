@@ -1,14 +1,11 @@
+<h3 class="page-header"><%= page_title %></h3>
 
-<section class="form">
-<%= form_for @passenger do |f| %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :category %>
-  <%= f.text_field :category %>
-
-<%= f.submit  %>
-
-<% end %>
+<section class="work-form">
+  <%= form_for @work, url: new_work_path do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :category %>
+    <%= f.select :category, @category_list %>
+    <%= f.submit %>
+  <% end %>
 </section>

@@ -16,6 +16,7 @@ class WorksController < ApplicationController
 	end
 
 	def new
+		@category_list = CATEGORIES
 		@work = Work.new
 	end
 
@@ -27,10 +28,14 @@ class WorksController < ApplicationController
 
 	def cast_vote
 		if current_user
-			Vote.create(work: @work, user: User.find(session[:user_id]))
-			flash[:success] = "Vote cast!"
+			@vote = Vote.new(work: @work, user: User.find(session[:user_id]))
+			if @vote.save
+				flash[:success] = "Vote cast for #{@work.title}!"
+			else
+				flash[:alert] = @vote.errors
+			end
 		else
-			flash[:alert] = "You must log in to do that"
+			flash[:alert] = "You must log in to do that."
 		end
 		redirect_to works_path
 	end

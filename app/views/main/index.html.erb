@@ -1,10 +1,9 @@
-<section class="spotlight"><h3>Media Spotlight <%= @top_overall.title %> by <%= @top_overall.creator %></h3>
+<section class="spotlight">
+	<h3>Media Spotlight <%= @top_overall.title %> by <%= @top_overall.creator %></h3>
 	<p><%= @top_overall.get_vote_count %> - <%= @top_overall.description %></p>
 </section>
 
-
 <section class="top-ten-lists grid-x">
-
 	<% @top_list.each do |category_type, works| %>
 		<section class="cell large-auto">
 		<h3><%= category_type.titlecase %>s</h3>

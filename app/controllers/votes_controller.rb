@@ -6,8 +6,19 @@ class VotesController < ApplicationController
 
 	# Creates a new vote
 	def create
-		Vote.create(vote_params)
+		# Vote.create(vote_params)
 		# redirect_to vote_path(params[:id])
+		raise
+		@work = find_work
+		if current_user
+			@vote = Vote.new(work: @work, user: User.find(session[:user_id]))
+			if @vote.save
+				flash[:success] = "Vote cast! for #{@work.title}"
+			else
+				flash[:alert] = @vote.errors
+			end
+		end
+		redirect_to works_path
 	end
 
 	# Creates a new vote
