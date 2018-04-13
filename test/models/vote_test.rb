@@ -48,6 +48,18 @@ describe Vote do
 			non_dup_vote.valid?.must_equal true
 		end
 
+	end
+
+	describe "relationship" do
+		it "it deletes itself if work has been deleted" do
+			work = Work.create(title: "foo", category: "book")
+			vote = Vote.create(work: work, user: users(:ada))
+
+			work.delete
+			vote.must_be_nil
+
+
+		end
 
 	end
 end

@@ -1,0 +1,7 @@
+<h1>create Work</h1>
+
+<%= form_for @work, url: edit_work_path do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>

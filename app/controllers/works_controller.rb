@@ -11,8 +11,12 @@ class WorksController < ApplicationController
 
 	# Creates a new work
 	def create
-		Work.create(work_params)
+		@work = Work.create(work_params)
 		redirect_to work_path(params[:id])
+	end
+
+	def new
+		@work = Work.new
 	end
 
 	def edit

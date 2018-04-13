@@ -3,8 +3,6 @@ class Work < ApplicationRecord
 
 	before_validation :remove_white_space_from_title_description_creator
 
-	# validates :title, :valid_string
-
 	validates :title, :length => { minimum: 1 }, :uniqueness => {
 		:scope => :category, :case_sensitive => false, :message => "fucked up title"}
 
@@ -39,7 +37,15 @@ class Work < ApplicationRecord
 		return top_works
 	end
 
-
+	def self.get_top_overall
+		# return Work.order(votes_count: :desc).first
+		top_work = nil
+		CATEGORIES.each do |work_category|
+			top_in_category = get_sorted_in_category(work_category, 1).pop
+			top_work = top_in_category if top_work.nil? || top_in_category.get_vote_count > top_work.get_vote_count
+		end
+		return top_work
+	end
 
 	private
 
@@ -52,19 +58,17 @@ class Work < ApplicationRecord
 		raise ArgumentError.new("Invalid number") if !num.nil? && !num.is_a?(Integer)
 	end
 
-
 	def self.get_sorted_in_category(work_category, num)
 		works_in_order = Work.where(category: work_category).order(votes_count: :desc)
 		return num.nil? ? works_in_order : works_in_order.first(num)
 	end
-
 
 	def calculate_vote_count
 		return self.votes.count
 	end
 
 	def remove_white_space_from_title_description_creator
-		[self.title, self.description, self.creator].each do |work_attribute|
+		[title, description, creator].each do |work_attribute|
 			work_attribute.squish! if !work_attribute.nil?
 		end
 	end

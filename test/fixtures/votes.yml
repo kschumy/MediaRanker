@@ -11,7 +11,7 @@ z_hpbook:
   user: z
   work: hpbook
 mcuser_hpbook:
-  user: z
+  user: mcuser
   work: hpbook
 ada_hpmovie:
   user: ada
@@ -20,7 +20,7 @@ z_hpmovie:
   user: z
   work: hpmovie
 mcuser_hpmovie:
-  user: z
+  user: mcuser
   work: hpmovie
 grace_hpmovie:
   user: grace
