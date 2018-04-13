@@ -21,11 +21,14 @@
       <a class="button" href="/works">View all media</a>
       <a class="button" href="/works/new">Add a new work</a>
       <a class="button" href="/users">View all users</a>
+      <% @user = User.find_by(id: current_user) %>
       <% if !current_user %>
         <a class="button right-nav-button" href="/login">Log In</a>
       <% else %>
-        <a class="button right-nav-button" href="/user/id">Logged in as <%= User.find_by(id: current_user).name %></a>
-        <a class="button right-nav-button" rel="nofollow" data-method="delete" href="/login">Log Out</a>
+      <%= link_to "Log Out", logout_path, method: :delete, class: "button right-nav-button" %>
+      <%= link_to "Logged in as #{@user.name}", user_path(@user.id), class: "button logged-in-button" %>
+
+
       <% end %>
 
     </nav>

@@ -39,6 +39,11 @@
  	padding-bottom: 2rem;
  }
 
+ a:hover {
+   text-decoration: none;
+ }
+
+
 
  .row {
    max-width: 100%;
@@ -48,9 +53,13 @@
    padding: 25px 20px 10px 20px;
  }
 
- a:hover {
-   text-decoration: none;
- }
+ .row::before, .row::after {
+    display: table;
+    content: ' ';
+  }
+
+  .row::after{clear:both}
+
 
  .row h2 {
  	text-align: center;
@@ -70,8 +79,15 @@
 
  }
 
+
+.logged-in-button {
+  float: right;
+}
+
  .right-nav-button {
  	float: right !important;
+  margin: 0px 0.25rem 0px;
+  /* padding: 12.24px 14.4px; */
  }
 
 
@@ -82,10 +98,10 @@
 
 
 
-.spotlight {
+/* .spotlight {
   padding: 0 2rem 1rem 2rem;
   border-bottom: #cacaca 1px solid;
-}
+} */
  /* colors!
  #000000
  #0a0a0a
