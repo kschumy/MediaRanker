@@ -228,10 +228,13 @@ header {
 }
 
 .top-ten-lists h4 {
-      font-weight: bold;
-      color: #26A69A;
+  font-weight: bold;
+  color: #26A69A;
 }
 
+.black-subtitle {
+  font-weight: bold;
+}
 
 
 /* .spotlight {
