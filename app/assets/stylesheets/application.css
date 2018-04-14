@@ -23,14 +23,14 @@
  	list-style-type: none;
  }
 
-  /* .button {
- 	 color: #fefefe;
- 	 background-color: #26a69a;
- 	 transition: background-color 0.25s ease-out 0s, color 0.25s ease-out 0s;
-   background-color: inherit;
 
-  } */
+ .row {
+   max-width: 100%;
 
+   border-bottom: 1px solid #EEEEEE;
+   margin-bottom: 10px;
+   padding: 25px 20px 10px 20px;
+ }
  main, .alert-section {
  	max-width: 75rem;
  	margin-right: auto;
@@ -39,6 +39,8 @@
  	padding-bottom: 2rem;
  }
 
+
+
  a:hover {
    text-decoration: none;
     color: #FF5722;
@@ -46,13 +48,7 @@
 
 
 
- .row {
-   max-width: 100%;
-   background-color: #B2DFDB;
-   border-bottom: 1px solid #EEEEEE;
-   margin-bottom: 10px;
-   padding: 25px 20px 10px 20px;
- }
+
 
  .row::before, .row::after {
     display: table;
@@ -60,6 +56,8 @@
   }
 
   .row::after{clear:both}
+
+
 
 
  .row h2 {
@@ -80,6 +78,9 @@
 
  }
 
+header {
+     background-color: #B2DFDB;
+}
 
 .logged-in-button {
   float: right;
@@ -93,16 +94,87 @@
 
 
  .spotlight {
-   padding: 0.5rem 2rem 1rem 2rem;
+   font-weight: bold;
+   /* font-weight: 700; */
+  color: #26A69A;
+   padding: 0 1rem 2rem 1rem;
+   /* padding: 0.5rem 2rem 1rem 2rem; */
    border-bottom: #cacaca 1px solid;
  }
+
+.spotlight h3 {
+  font-weight: bold;
+  /* font-weight: 700; */
+  color: #26A69A;
+  margin: 0;
+  padding: 0;
+  /* line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem; */
+  -webkit-margin-after: 8px;
+-webkit-margin-before: 0px;
+-webkit-margin-end: 0px;
+-webkit-margin-start: 0px;
+}
+.spotlight-grey-header {
+  color: #424242;
+
+
+}
+
+.spotlight-work-main {
+
+}
+
+.spotlight p {
+  color: #0a0a0a;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
 
 .vote-botton {
   padding: none;
   margin: auto;
 }
 
+.cell {
+  grid-column-gap: 2em;
+  padding-right: 2.5rem;
 
+  /* padding-left: 1em; */
+}
+.cell ul {
+  margin-left: 0px;
+  /* padding-right: 2rem;
+  border-top: 2px solid;
+  border-top-color: #B2DFDB; */
+}
+
+.cell small {
+  color: slategrey;
+}
+
+.cell p {
+  margin-bottom: 1rem;
+    font-size: inherit;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+}
+
+.top-ten-lists h3, .teal-title {
+  color: #26A69A;
+  font-weight: bold;
+
+}
+
+.top-ten-lists h3 {
+  margin: 75px 0px 0px 0px;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+  /* border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB; */
+  /* padding-left: 0.5em; */
+}
 
 .big-black-title {
   font-family: "Gudea", sans-serif;
@@ -153,6 +225,11 @@
 .alert h3, .success h3 {
   font-weight:normal;
   font-size:1em;
+}
+
+.top-ten-lists h4 {
+      font-weight: bold;
+      color: #26A69A;
 }
 
 

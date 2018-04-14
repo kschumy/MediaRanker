@@ -49,4 +49,5 @@ describe User do
     new_user.valid?.must_equal false
     new_user.errors.must_include :name
   end
+
 end

@@ -1,5 +1,6 @@
 <section class="spotlight">
-	<h3>Media Spotlight <%= @top_overall.title %> by <%= @top_overall.creator %></h3>
+	<h3><span class="spotlight-grey-header">Media Spotlight: </span>
+		<span class="spotlight-work-main"><%= @top_overall.title %> by <%= @top_overall.creator %></span></h3>
 	<p><%= @top_overall.get_vote_count %> - <%= @top_overall.description %></p>
 </section>
 

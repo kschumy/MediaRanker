@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700" rel="stylesheet">
   </head>
 
   <body>
@@ -20,37 +20,36 @@
       <nav>
         <a class="button" href="/">View top media</a>
         <a class="button" href="/works">View all media</a>
-        <%= link_to "Add a work", new_work_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
         <a class="button" href="/users">View all users</a>
-        <% @site_user = User.find_by(id: current_user) %>
-        <% if !@site_user  %>
+        <% @curr_user = User.find_by(id: current_user) %>
+        <% if !@curr_user  %>
           <a class="button right-nav-button" href="/login">Log In</a>
         <% else %>
           <%= link_to "Log Out", logout_path, method: :delete, class: "button right-nav-button" %>
-          <%= link_to "Logged in as #{@site_user.name}", user_path(@site_user.id), class: "button logged-in-button" %>
+          <%= link_to "Logged in as #{@curr_user.name}", user_path(@curr_user.id), class: "button logged-in-button" %>
         <% end %>
       </nav>
     </header>
 
     <section class="alert-section">
       <% flash.each do |name, message| %>
-        <% if message.respond_to?(:each) %>
-          <section class="status <%= name %>">
-          <h3>An error has occured.</h3>
-          <ul>
-            <% flash[:alert].each do |field, message| %>
-              <li><%= field %>: <%= message.is_a?(String) ? message : message.pop %></li>
-            <% end %>
-          </ul>
-        <% else %>
-          <h3 class="success"><%= message %></h3>
-        <% end %>
+        <section class="status <%= name %>">
+          <% if message.respond_to?(:each) %>
+            <h3>An error has occured.</h3>
+            <ul>
+              <% flash[:alert].each do |field, message| %>
+                <li><%= field %>: <%= message.is_a?(String) ? message : message.pop %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <h3 class="success"><%= message %></h3>
+          <% end %>
         </section>
       <% end %>
     </section>
 
     <main>
-
       <%= yield %>
     </main>
   </body>
