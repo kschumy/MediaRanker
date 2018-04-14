@@ -34,10 +34,8 @@
 
     <section class="alert-section">
       <% flash.each do |name, message| %>
-
         <% if message.respond_to?(:each) %>
           <section class="status <%= name %>">
-
           <h3>An error has occured.</h3>
           <ul>
             <% flash[:alert].each do |field, message| %>
@@ -45,7 +43,7 @@
             <% end %>
           </ul>
         <% else %>
-          <h3><%= message %></h3>
+          <h3 class="success"><%= message %></h3>
         <% end %>
         </section>
       <% end %>

@@ -55,6 +55,10 @@ class WorksController < ApplicationController
 
 	private
 
+	def find_work
+    @work = Work.find_by(id: params[:id])
+  end
+
 	def work_params
 		return params.require(:work).permit(:id, :title, :category, :publication_year,
 			:description, :creator)

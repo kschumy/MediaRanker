@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	before_validation :remove_white_space_from_name
 
 	validates :name, :length => { minimum: 1 }, :uniqueness => {
-		:case_sensitive => false, :message => "fucked up name"}
+		:case_sensitive => false }
 
 	private
 

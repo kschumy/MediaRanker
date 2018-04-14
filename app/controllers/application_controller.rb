@@ -9,8 +9,4 @@ class ApplicationController < ActionController::Base
     session[:user_id]
   end
 
-  def find_work
-    @work = Work.find_by(id: params[:id])
-  end
-
 end

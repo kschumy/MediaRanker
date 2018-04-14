@@ -3,9 +3,4 @@ class ApplicationRecord < ActiveRecord::Base
 
   CATEGORIES = %w[movie book album]
 
-
-  # def valid_string
-  #   :length => { minimum: 1 }, :uniqueness => {
-  # 		:scope => :category, :case_sensitive => false, :message => "fucked up title"}
-  # end
 end

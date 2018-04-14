@@ -23,7 +23,7 @@ describe User do
       new_user = User.create(name: users(:lovelace).name)
       new_user.valid?.must_equal false
       new_user.errors.must_include :name
-      new_user.errors.messages[:name].must_equal ["fucked up name"]
+      new_user.errors.messages[:name].must_equal ["has already been taken"]
     end
 
     it "removes strips white space from name" do

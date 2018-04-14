@@ -4,7 +4,7 @@ class Work < ApplicationRecord
 	before_validation :remove_white_space_from_title_description_creator
 
 	validates :title, :length => { minimum: 1 }, :uniqueness => {
-		:scope => :category, :case_sensitive => false, :message => "fucked up title"}
+		:scope => :category, :case_sensitive => false }
 
 	validates :category, :inclusion => { :in => CATEGORIES }
 
@@ -24,8 +24,6 @@ class Work < ApplicationRecord
 	def self.get_top_in_category_sorted(work_category, num: nil)
 		valid_category_and_num_or_error(work_category, num)
 		return get_sorted_in_category(work_category, num)
-		# works_in_order = Work.where(category: category).order(votes_count: :desc)
-		# return num.nil? ? works_in_order : works_in_order.first(num)
 	end
 
 	def self.get_top_in_all_categories_sorted(num: nil)
@@ -38,7 +36,6 @@ class Work < ApplicationRecord
 	end
 
 	def self.get_top_overall
-		# return Work.order(votes_count: :desc).first
 		top_work = nil
 		CATEGORIES.each do |work_category|
 			top_in_category = get_sorted_in_category(work_category, 1).pop
@@ -46,7 +43,6 @@ class Work < ApplicationRecord
 		end
 		return top_work
 	end
-
 
 	private
 
@@ -65,7 +61,7 @@ class Work < ApplicationRecord
 	end
 
 	def calculate_vote_count
-		return self.votes.count
+		return self.votes_count
 	end
 
 	def remove_white_space_from_title_description_creator
@@ -78,11 +74,5 @@ class Work < ApplicationRecord
 		self.description = nil if !self.description.nil? && self.description.blank?
 		self.creator = nil if !self.creator.nil? && self.creator.blank?
 	end
-
-	# def publication_year_if_bad
-	# 	if publication_year.present? && (!publication_year.is_a?(Date) || publication_year > Date.today)
-  #     errors.add(:publication_year, "invalid publication year")
-  # 	end
-	# end
 
 end

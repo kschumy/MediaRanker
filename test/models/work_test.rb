@@ -29,7 +29,7 @@ describe Work do
         works(:hpbook).category)
       new_work.valid?.must_equal false
       new_work.errors.must_include :title
-      new_work.errors.messages[:title].must_equal ["fucked up title"]
+      new_work.errors.messages[:title].must_equal ["has already been taken"]
     end
 
     it "must have a unique, case-insensitive title" do
@@ -226,15 +226,15 @@ describe Work do
     end
 
     it 'returns the number of votes' do
-      new_work_wtf = works(:novotesbook)
-      new_work_wtf.get_vote_count.must_equal 0
+      new_work = works(:novotesbook)
+      new_work.get_vote_count.must_equal 0
 
       Vote.create work: works(:novotesbook), user: users(:noupvotesuserone)
       Vote.create work: works(:novotesbook), user: users(:noupvotesusertwo)
       Vote.create work: works(:novotesbook), user: users(:noupvotesuserthree)
       Vote.create work: works(:novotesbook), user: users(:noupvotesuserfour)
 
-      new_work_wtf.get_vote_count.must_equal 4
+      new_work.get_vote_count.must_equal 4
     end
 
   end

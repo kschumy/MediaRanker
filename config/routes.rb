@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 	delete '/login', to: 'sessions#destroy', as: 'logout'
 
 	resources :users, only: [:index, :show, :create]
-	resources :works#, except: [:destroy]
-	resources :votes, only: [:new, :create, :destroy]
-	get '/works/:id/vote', to: 'works#cast_vote', as: 'cast_vote'
+	resources :works do
+		resources :votes, only: [:create]
+	end
+	# resources :votes, only: [:new, :create, :destroy]
+	# get '/works/:id/vote', to: 'works#cast_vote', as: 'cast_vote'
 end

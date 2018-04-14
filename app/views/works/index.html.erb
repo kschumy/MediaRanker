@@ -10,13 +10,13 @@
     </tr>
   </thead>
 	<tbody>
-		<% @works.each do |work|  %>
+		<% @works.each do |work| %>
 	    <tr>
 	      <td><%= work.get_vote_count %></td>
 	      <td><%= work.title %></td>
 	      <td><%= work.creator %></td>
 	      <td><%= work.get_publication_year %></td>
-	      <td><%= link_to "Upvote", cast_vote_path(work.id), class: "button vote-botton" %></td>
+	      <td><%= link_to "Upvote", work_votes_path(work.id), method: :post, class: "button vote-botton" %></td>
 	    </tr>
 		<% end %>
   </tbody>

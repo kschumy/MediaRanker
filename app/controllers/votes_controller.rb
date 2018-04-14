@@ -1,14 +1,7 @@
 class VotesController < ApplicationController
 
-	def index
-		@vote = Vote.all
-	end
-
 	# Creates a new vote
 	def create
-		# Vote.create(vote_params)
-		# redirect_to vote_path(params[:id])
-		raise
 		@work = find_work
 		if current_user
 			@vote = Vote.new(work: @work, user: User.find(session[:user_id]))
@@ -21,17 +14,14 @@ class VotesController < ApplicationController
 		redirect_to works_path
 	end
 
-	# Creates a new vote
-	def new
-		raise
-		# Vote.create(vote_params)
-		# redirect_to vote_path(params[:id])
-	end
-
 	private
 
 	def work_params
 		return params.require(:work).permit(:id, :user_id, :work_id)
+	end
+
+	def find_work
+    @work = Work.find_by(id: params[:work_id])
 	end
 
 end
