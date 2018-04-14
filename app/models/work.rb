@@ -39,6 +39,7 @@ class Work < ApplicationRecord
 		top_work = nil
 		CATEGORIES.each do |work_category|
 			top_in_category = get_sorted_in_category(work_category, 1).pop
+			next if top_in_category.nil? #
 			top_work = top_in_category if top_work.nil? || top_in_category.get_vote_count > top_work.get_vote_count
 		end
 		return top_work

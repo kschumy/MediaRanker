@@ -18,10 +18,10 @@
       <h2><a href="/" class="site-name-in-header">Media Ranker</a>
       <small class="tagline-in-header">Ranking the Best of Everything</small></h2>
       <nav>
-        <a class="button" href="/">View top media</a>
-        <a class="button" href="/works">View all media</a>
+        <%= link_to "View top media", root_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
         <%= link_to "Add a new work", new_work_path, class: "button" %>
-        <a class="button" href="/users">View all users</a>
+        <%= link_to "View all users", users_path, class: "button" %>
         <% @curr_user = User.find_by(id: current_user) %>
         <% if !@curr_user  %>
           <a class="button right-nav-button" href="/login">Log In</a>
