@@ -128,7 +128,7 @@ header {
   color: slategrey;
 }
 
-.cell p {
+.cell p, .tiny-black {
   margin-bottom: 1rem;
   font-size: inherit;
   line-height: 1.6;

@@ -1,8 +1,19 @@
-<h1>User List</h1>
-<ul>
-  <% @users.each do |user|  %>
-    <li>
-      <%= link_to user.name, user_path(user.id) %> 
-    </li>
-  <% end %>
-</ul>
+<h3 class="teal-title">List of Users</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th width="100">Votes</th>
+      <th  width="201">Joined</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user|  %>
+    <tr>
+      <td><%= link_to "#{user.name}", user_path(user.id) %></td>
+      <td><%= user.get_vote_count %></td>
+      <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

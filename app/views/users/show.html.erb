@@ -1,2 +1,27 @@
-<h1>User show</h1>
-<h2><%= @user.name %></h2>
+<h3 class="teal-title">User Summary: </h3><h3><%= @user.name %></h3>
+<p tiny-black>Joined site <%= user.created_at.strftime("%b %d, %Y")%></p>
+<% @all_works_sorted_in_categories.each do |work_category, works| %>
+<h4 class="black-subtitle"><%= work_category.titlecase %>s</h4>
+<table>
+	<thead>
+		<tr>
+			<th width="80">Votes</th>
+			<th>Title</th>
+			<th>Created By</th>
+			<th width="100">Published</th>
+			<th width="100">Upvote</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% works.each do |work| %>
+		<tr>
+			<td><%= work.get_vote_count %></td>
+			<td><%= link_to "#{work.title}", work_path(work.id) %></td>
+			<td><%= work.creator %></td>
+			<td><%= work.get_publication_year %></td>
+			<td><%= link_to "Upvote", work_votes_path(work.id), method: :post, class: "button vote-botton" %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>
