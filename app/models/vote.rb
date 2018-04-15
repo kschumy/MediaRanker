@@ -8,8 +8,8 @@ class Vote < ApplicationRecord
 	validates :user, :uniqueness => { :scope => :work, :case_sensitive => false,
 		:message => "Already voted for this work"}
 
-	def get_work_info
-		return work.attributes
-	end
+	# def get_work_info
+	# 	return work.attributes
+	# end
 
 end

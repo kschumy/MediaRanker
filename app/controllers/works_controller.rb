@@ -7,10 +7,6 @@ class WorksController < ApplicationController
 
 	def show
 		@work = Work.find_by(id: params[:id])
-		# if !@work
-		# 	flash[:alert] = "Work does not exist"
-		# 	redirect_back fallback_location: works_path
-		# end
 	end
 
 	def create
@@ -30,7 +26,7 @@ class WorksController < ApplicationController
 	end
 
 	def edit
-			@category_list = CATEGORIES
+		@category_list = CATEGORIES
 		@work = Work.find_by(id: params[:id])
 	end
 
