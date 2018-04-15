@@ -1,1 +1,34 @@
-<h1><%= @work.title %></h1>
+<section class="work-details">
+	<h3 class="teal-title"><%= @work.title %></h3>
+	<p tiny-black>Created by: <%= @work.creator %></p>
+	<p tiny-black>Published: <%= @work.get_publication_year %></p>
+	<p tiny-black><%= @work.description %></p>
+</section>
+
+<section class="options-buttons">
+	<%= link_to "Back to media ranks", root_path, class: "button" %>
+	<%= link_to "Edit", edit_work_path, class: "button" %>
+	<%= link_to "Upvote", work_votes_path(@work.id), method: :post, class: "button" %>
+	<%= link_to "Delete", work_path,  method: :delete, class: "button alert", confirm: 'Are you sure?' %>
+</section>
+
+<section class="voted-by-users">
+	<h3 class="teal-title"><%= @work.get_vote_count %> Votes for this <%= @work.category.capitalize %></h3>
+	<table>
+		<thead>
+			<tr>
+				<th>User</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @work.votes.each do |vote| %>
+				<tr>
+					<td><%= link_to "#{vote.user.name}", user_path(vote.user.id) %></td> <!-- QUESTION: too dependent/shitty?? -->
+					<td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</section>

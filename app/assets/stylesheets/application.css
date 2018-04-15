@@ -70,8 +70,6 @@ a:hover {
   border-right: #ffffff 2px solid;
 }
 
-
-
 header {
   background-color: #B2DFDB;
 }
@@ -101,16 +99,11 @@ header a:hover {
   color: #26A69A;
   margin: 0;
   padding: 0;
-  -webkit-margin-after: 8px;
-  -webkit-margin-before: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-margin-start: 0px;
 }
 
 .spotlight a {
   border-bottom: 2px solid;
 }
-
 
 
 .spotlight-grey-header {
@@ -126,7 +119,7 @@ header a:hover {
   font-weight: 400;
 }
 
-.vote-botton {
+.vote-button {
   padding: none;
   margin: auto;
 }

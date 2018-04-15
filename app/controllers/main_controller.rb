@@ -4,7 +4,4 @@ class MainController < ApplicationController
 		@top_overall = Work.get_top_overall
 	end
 
-	private
-
-	
 end

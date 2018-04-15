@@ -9,7 +9,6 @@ class WorksController < ApplicationController
 		@work = Work.find_by(id: params[:id])
 	end
 
-	# Creates a new work
 	def create
 		@work = Work.new(work_params)
 		if @work.save
@@ -27,26 +26,19 @@ class WorksController < ApplicationController
 	end
 
 	def edit
+			@category_list = CATEGORIES
 		@work = Work.find_by(id: params[:id])
-		@work.update(work_params)
-	 	redirect_to work_path(params[:id])
-	end
-
-	def cast_vote
-		if current_user
-			@vote = Vote.new(work: @work, user: User.find(session[:user_id]))
-			if @vote.save
-				flash[:success] = "Vote cast for #{@work.title}!"
-			else
-				flash[:alert] = @vote.errors
-			end
-		else
-			flash[:alert] = "You must log in to do that."
-		end
-		redirect_to works_path
 	end
 
 	def update
+		@work = Work.find_by(id: params[:id])
+		if @work
+
+			@work.update(work_params)
+	 		redirect_to work_path(params[:id])
+		else
+			redirect_to works_path
+		end
 	end
 
 	def destroy

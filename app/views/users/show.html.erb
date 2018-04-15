@@ -14,7 +14,7 @@
 	</thead>
 	<tbody>
 		<% @site_user.votes.each do |vote| %>
-			<% work = vote.work %> <!-- HACK: too dependent?? -->
+			<% work = vote.work %> <!-- QUESTION: too dependent/shitty?? -->
 			<tr>
 				<td><%= link_to "#{work.title}", work_path(work.id) %></td>
 				<td><%= work.get_vote_count %></td>

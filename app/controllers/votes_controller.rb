@@ -1,6 +1,5 @@
 class VotesController < ApplicationController
 
-	# Creates a new vote
 	def create
 		@work = find_work
 		if current_user
@@ -11,7 +10,7 @@ class VotesController < ApplicationController
 				flash[:alert] = @vote.errors
 			end
 		end
-		redirect_to works_path
+		redirect_back(fallback_location: works_path)
 	end
 
 	private

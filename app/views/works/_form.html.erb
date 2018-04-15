@@ -1,7 +1,7 @@
 <h3 class="teal-title"><%= page_title %></h3>
   <%= form_for @work do |f| %>
     <%= f.label :category %>
-    <%= f.select :category, @category_list %>
+    <%= f.select :category, category_list %>
 
     <%= f.label :title %>
     <%= f.text_field :title %>
