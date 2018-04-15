@@ -1,7 +1,7 @@
 <section class="spotlight">
 	<h3><span class="spotlight-grey-header">Media Spotlight: </span>
-		<span class="spotlight-work-main"><%= @top_overall.title %> by <%= @top_overall.creator %></span></h3>
-	<p><%= @top_overall.get_vote_count %> - <%= @top_overall.description %></p>
+		<span class="spotlight-work-main"><%= link_to "#{@top_overall.title}", work_path(@top_overall.id) %> by <%= @top_overall.creator %></span></h3>
+	<p><%= @top_overall.get_vote_count %> votes - <%= @top_overall.description %></p>
 </section>
 
 <section class="top-ten-lists grid-x">
@@ -10,7 +10,7 @@
 			<h3><%= category_type.titlecase %>s</h3>
 			<ul>
 				<% works.each do |work| %>
-					<li><h4><%= work.title %> <small>by <%= work.creator %></small></li></h4>
+					<li><h4><%= link_to "#{work.title}", work_path(work.id) %> <small>by <%= work.creator %></small></h4></li>
 					<p><%= work.get_vote_count %> votes</p>
 				<% end %>
 			</ul>

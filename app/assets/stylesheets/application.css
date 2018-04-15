@@ -41,7 +41,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: #FF5722;
+  color: #478B82
 }
 
 .row::before, .row::after {
@@ -70,8 +70,14 @@ a:hover {
   border-right: #ffffff 2px solid;
 }
 
+
+
 header {
   background-color: #B2DFDB;
+}
+
+header a:hover {
+  color: #FF5722;
 }
 
 .logged-in-button {
@@ -100,6 +106,12 @@ header {
   -webkit-margin-end: 0px;
   -webkit-margin-start: 0px;
 }
+
+.spotlight a {
+  border-bottom: 2px solid;
+}
+
+
 
 .spotlight-grey-header {
   color: #424242;
