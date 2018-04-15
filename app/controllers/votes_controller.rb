@@ -9,6 +9,8 @@ class VotesController < ApplicationController
 			else
 				flash[:alert] = @vote.errors
 			end
+		else
+			flash[:alert] = "You must log in to do that"
 		end
 		redirect_back(fallback_location: works_path)
 	end

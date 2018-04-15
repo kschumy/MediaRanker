@@ -24,14 +24,17 @@ class Work < ApplicationRecord
 		return publication_year.year if !publication_year.nil?
 	end
 
-	# pre: provided category must be a valid category in CATEGORIES and num must be
+	# PRE: provided category must be a valid category in CATEGORIES and num must be
 	# and int or nil. Otherwise, throws ArgumentError.
-
+	# Returns the provided number of
 	def self.get_top_in_category_sorted(work_category, num: nil)
 		valid_category_and_num_or_error(work_category, num)
 		return get_sorted_in_category(work_category, num)
 	end
 
+	# PRE: provided category must be a valid category in CATEGORIES and num must be
+	# and int or nil. Otherwise, throws ArgumentError.
+	# Returns the provided number of 
 	def self.get_top_in_all_categories_sorted(num: nil)
 		valid_num_or_error(num)
 		top_works = {}
