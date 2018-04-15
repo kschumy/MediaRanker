@@ -8,18 +8,24 @@ class Work < ApplicationRecord
 
 	validates :category, :inclusion => { :in => CATEGORIES }
 
+	# TODO: change when migrate to int
 	validates :publication_year, inclusion: { :in => (Date.new(0000,1,1)..Date.today) },
 		allow_nil: true
 
 	after_validation :nil_blank_values
 
+	# re
 	def get_vote_count
 		return calculate_vote_count
 	end
 
+	# TODO: change when migrate to int
 	def get_publication_year
 		return publication_year.year if !publication_year.nil?
 	end
+
+	# pre: provided category must be a valid category in CATEGORIES and num must be
+	# and int or nil. Otherwise, throws ArgumentError.
 
 	def self.get_top_in_category_sorted(work_category, num: nil)
 		valid_category_and_num_or_error(work_category, num)
@@ -47,9 +53,8 @@ class Work < ApplicationRecord
 
 	private
 
-	def self.valid_category_and_num_or_error(work_category, num)
+	def self.valid_category_or_error(work_category, num)
 		raise ArgumentError.new("Invalid category") if !CATEGORIES.include?(work_category)
-		valid_num_or_error(num)
 	end
 
 	def self.valid_num_or_error(num)
