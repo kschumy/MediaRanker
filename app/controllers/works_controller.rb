@@ -7,6 +7,10 @@ class WorksController < ApplicationController
 
 	def show
 		@work = Work.find_by(id: params[:id])
+		# if !@work
+		# 	flash[:alert] = "Work does not exist"
+		# 	redirect_back fallback_location: works_path
+		# end
 	end
 
 	def create
@@ -33,7 +37,6 @@ class WorksController < ApplicationController
 	def update
 		@work = Work.find_by(id: params[:id])
 		if @work
-
 			@work.update(work_params)
 	 		redirect_to work_path(params[:id])
 		else
@@ -42,6 +45,16 @@ class WorksController < ApplicationController
 	end
 
 	def destroy
+		@work = Work.find_by(id: params[:id])
+	 	if @work
+		 	@work.votes.each { |vote| vote.destroy }
+		  @work.destroy
+			flash[:success] = "#{@work.title} deleted"
+			redirect_to works_path
+	 	else
+		 flash[:alert] = "Work does not exist"
+		 redirect_back fallback_location: works_path
+	 	end
 	end
 
 	private
