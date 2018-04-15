@@ -35,6 +35,10 @@ main, .alert-section {
   padding-bottom: 2rem;
 }
 
+a {
+  color: #26A69A;
+}
+
 a:hover {
   text-decoration: none;
   color: #FF5722;

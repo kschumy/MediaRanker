@@ -71,7 +71,7 @@ group :test do
   gem 'minitest-reporters'
 end
 
-# Added by me
-group :development do
-  gem 'bullet'
-end
+# # Added by me
+# group :development do
+#   gem 'bullet'
+# end

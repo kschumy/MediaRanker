@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
-
 	def show
-		@user = User.find_by(id: params[:id])
+		@site_user = User.find_by(id: params[:id])
+		@voted_on_works = @site_user.votes
+		# @voted_on_works = @user.get_all_voted_works # TODO: dependency??
 	end
 
-	# Creates a new user
 	def create
 		raise
 		User.create(user_params)
