@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
 	before_action :find_work, only:[:show, :edit, :update, :destroy]
+	@category_list = CATEGORIES
+
 
 	def index
 		@all_works_sorted_in_categories = Work.get_top_in_all_categories_sorted
@@ -14,8 +16,10 @@ class WorksController < ApplicationController
 			flash[:success] = "Successfully created #{@work.category} #{@work.id}"
 			redirect_to work_path(id: @work.id)
 		else
-			flash[:alert] = @work.errors
-			redirect_back(fallback_location: works_path)
+			flash.now[:alert] = @work.errors
+			@category_list = CATEGORIES
+			render :new
+			# redirect_back(fallback_location: works_path)
 		end
 	end
 

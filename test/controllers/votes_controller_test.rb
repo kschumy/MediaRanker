@@ -1,7 +1,8 @@
 require "test_helper"
 
 describe VotesController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
+	# it "should get index" do
+  #   get votes_s_path
+  #   must_respond_with :success
   # end
 end
