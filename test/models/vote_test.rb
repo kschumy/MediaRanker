@@ -57,9 +57,7 @@ describe Vote do
 	#
 	# 		work.delete
 	# 		vote.must_be_nil
-	#
-	#
 	# 	end
-
+	#
 	# end
 end

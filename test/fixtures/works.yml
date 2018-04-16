@@ -20,26 +20,12 @@ damn:
   title: Damn
   category: album
   publication_year: 2017-02-03
-  # description:
   creator: Grace Hooper, the Creator
-thank:
-  title: Thank Me Later
-  category: album
-  # publication_year:
-  description: Wheelchair Jimmy made it big
-  creator: Foobarbaz
 bundo:
   title: Day in the Life of Marlon Bundo
   category: book
   publication_year: 2018-03-22
   description: A bunny falls in love
-  # creator:
-minimal:
-  title: Minial Info Movie
-  category: movie
-  # publication_year:
-  # description:
-  # creator:
 novotesbook:
   title: No One Likes This Book
   category: book
@@ -47,8 +33,7 @@ novotesbook:
   description: unloved
   creator: unclaimed
 novotesbooktwo:
-  title: Apparently a Terrle Book
+  title: Apparently a terrible Book
   category: book
   publication_year: 2017-01-22
   description: No one likes this book
-  # creator:

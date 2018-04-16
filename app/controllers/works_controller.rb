@@ -1,12 +1,11 @@
 class WorksController < ApplicationController
-	# before_action :find_work, only:[:show, :edit, :update, :destroy, :cast_vote]
+	before_action :find_work, only:[:show, :edit, :update, :destroy]
 
 	def index
 		@all_works_sorted_in_categories = Work.get_top_in_all_categories_sorted
 	end
 
 	def show
-		@work = Work.find_by(id: params[:id])
 	end
 
 	def create
@@ -27,11 +26,9 @@ class WorksController < ApplicationController
 
 	def edit
 		@category_list = CATEGORIES
-		@work = Work.find_by(id: params[:id])
 	end
 
 	def update
-		@work = Work.find_by(id: params[:id])
 		if @work
 			@work.update(work_params)
 	 		redirect_to work_path(params[:id])
@@ -41,7 +38,6 @@ class WorksController < ApplicationController
 	end
 
 	def destroy
-		@work = Work.find_by(id: params[:id])
 	 	if @work
 		 	@work.votes.each { |vote| vote.destroy }
 		  @work.destroy

@@ -7,36 +7,9 @@ grace_hpbook:
 ada_hpbook:
   user: ada
   work: hpbook
-z_hpbook:
-  user: z
-  work: hpbook
-mcuser_hpbook:
+mcuser_damn:
   user: mcuser
-  work: hpbook
+  work: damn
 ada_hpmovie:
   user: ada
   work: hpmovie
-z_hpmovie:
-  user: z
-  work: hpmovie
-mcuser_hpmovie:
-  user: mcuser
-  work: hpmovie
-grace_hpmovie:
-  user: grace
-  work: hpmovie
-lovelace_hpmovie:
-  user: lovelace
-  work: hpmovie
-lovelace_damn:
-  user: lovelace
-  work: damn
-ada_damn:
-  user: ada
-  work: damn
-kathryn_damn:
-  user: kathryn
-  work: damn
-z_minimal:
-  user: z
-  work: minimal

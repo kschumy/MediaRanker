@@ -37,7 +37,6 @@ describe Work do
       new_work_title[0] = new_work_title.chr.swapcase
       new_work = Work.create(title: new_work_title, category:
         works(:hpbook).category)
-
       new_work.valid?.must_equal false
       new_work.errors.must_include :title
     end
@@ -55,13 +54,12 @@ describe Work do
       invalid_new_work_two.valid?.must_equal false
     end
 
-    # Validate category ----------------------------------------------------------
     it "allow duplicate title in different category" do
-      works(:hpbook).category.must_equal "book"
       new_work = Work.create(title: works(:hpbook).title, category: "album")
       new_work.valid?.must_equal true
     end
 
+    # Validate category --------------------------------------------------------
     it "does not allow an invalid category" do
       work = works(:bundo)
 
@@ -83,7 +81,7 @@ describe Work do
       end
     end
 
-    # Validate publication_year --------------------------------------------------
+    # Validate publication_year ------------------------------------------------
     it "can have a nil publication year" do
       work = works(:bundo)
       work.publication_year = nil
@@ -109,25 +107,18 @@ describe Work do
       work.publication_year = "foo"
       work.valid?.must_equal true
       work.publication_year.must_be_nil
+
+      work.publication_year = 42.0
+      work.valid?.must_equal false
+
+      work.publication_year = -2004
+      work.valid?.must_equal false
     end
 
     it "cannot have a year after publication_year" do
       work = works(:bundo)
 
       work.publication_year = Date.today + 1.year
-      work.valid?.must_equal false
-    end
-
-    it "cannot have an invalid date" do
-      work = works(:bundo)
-
-      work.publication_year = 1949
-      work.valid?.must_equal false
-
-      work.publication_year = 42.0
-      work.valid?.must_equal false
-
-      work.publication_year = -2004
       work.valid?.must_equal false
     end
 
@@ -204,7 +195,7 @@ describe Work do
       work.must_respond_to :votes
     end
 
-    it 'updates with votes' do
+    it 'updates with new votes' do
       work = works(:hpbook)
       num_of_original_votes = work.votes.count
       original_votes_array = work.votes
@@ -238,14 +229,14 @@ describe Work do
     end
 
   end
-  # GET PUBLICATION YEAR =======================================================
 
+  # GET PUBLICATION YEAR =======================================================
   describe "get_publication_year" do
     it "responds to get_publication_year" do
       works(:hpbook).must_respond_to :get_publication_year
     end
 
-    it "responds to get_publication_year" do
+    it "gives the correct publication year" do
       year_published = works(:hpbook).publication_year.year
       works(:hpbook).get_publication_year.must_equal year_published
     end
@@ -263,7 +254,97 @@ describe Work do
       work.publication_year = nil
       work.get_publication_year.must_be_nil
     end
+  end
+
+  # GET TOP IN ALL CATEGORIES SORTED ===========================================
+  describe "get_top_overall" do
+   # For reasons I don't understand but I'm guessing have something to do
+   # cache/yml and testing (or I'm just completely doing this wrong), I have
+   # to manually load these for counter cache to work
+
+    it "must respond to get_top_in_all_categories_sorted" do
+      Work.must_respond_to :get_top_in_all_categories_sorted
+    end
+
+    it "throws argument error if provided invalid num" do
+      proc {
+        Work.get_top_in_all_categories_sorted(num: "foo")
+      }.must_raise ArgumentError
+    end
+
+    it "return num of results" do
+      Vote.create(work: works(:novotesbook), user: users(:ada))
+      Vote.create(work: works(:novotesbook), user: users(:lovelace))
+      Vote.create(work: works(:novotesbooktwo), user: users(:mcuser))
+
+      expected_results = {
+        "album" => [works(:damn)],
+        "book" => [works(:novotesbook), works(:novotesbooktwo)],
+        "movie" => [works(:hpmovie)] }
+
+      votes_hash = Work.get_top_in_all_categories_sorted(num: 2)
+      votes_hash.must_equal expected_results
+    end
+
+    it "returns all with no num provided" do
+      Vote.create(work: works(:novotesbook), user: users(:ada))
+      Vote.create(work: works(:novotesbook), user: users(:lovelace))
+      Vote.create(work: works(:novotesbooktwo), user: users(:mcuser))
+
+      expected_results = {
+        "album" => [works(:damn)],
+        "book" => [ works(:novotesbook), works(:novotesbooktwo),
+          works(:givingtree), works(:hpbook), works(:bundo)],
+        "movie" => [works(:hpmovie)] }
+
+      votes_hash = Work.get_top_in_all_categories_sorted
+      votes_hash.must_equal expected_results
+    end
+  end
+
+  # GET TOP OVERALL ===========================================================
+  describe "get_top_overall" do
+   # For reasons I don't understand but I'm guessing have something to do
+   # cache/yml and testing (or I'm just completely doing this wrong), I have
+   # to manually load these for counter cache to work
+
+    it "must respond to get_top_overall" do
+      Work.must_respond_to :get_top_overall
+    end
+
+    it "return the expected results" do
+      Vote.create(work: works(:novotesbook), user: users(:ada))
+      Vote.create(work: works(:novotesbook), user: users(:lovelace))
+      Vote.create(work: works(:novotesbooktwo), user: users(:mcuser))
+
+      expected_results = works(:novotesbook)
+
+      results = Work.get_top_overall
+      results.must_equal expected_results
+    end
 
   end
+
+  # # GET TOP IN CATEGORY SORTED =================================================
+  #
+  # ** METHOD NOT USED IN CURRENT VERSION OF PROGRAM **
+  #
+  # describe "get_top_in_category_sorted" do
+  #   it "responds to get_top_in_category_sorted" do
+  #     Work.must_respond_to :get_top_in_category_sorted
+  #   end
+  #
+  #   it "throws argument error if provided invalid category" do
+  #     proc { Work.get_top_in_category_sorted("foo", num: 2) }.must_raise ArgumentError
+  #     proc { Work.get_top_in_category_sorted(num: 2) }.must_raise ArgumentError
+  #   end
+  #
+  #   it "throws argument error if provided invalid num" do
+  #     proc { Work.get_top_in_category_sorted("book", num: "foo") }.must_raise ArgumentError
+  #   end
+  # end
+
+
+
 
 end
