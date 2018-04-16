@@ -24,11 +24,10 @@
 		<tbody>
 			<% @work.votes.each do |vote| %>
 				<tr>
-					<td><%= link_to "#{vote.user.name}", user_path(vote.user.id) %></td> <!-- QUESTION: too dependent/shitty?? -->
+					<td><%= link_to "#{vote.user.name}", user_path(vote.user.id) %></td> <!-- QUESTION: too dependent?? -->
 					<td><%= vote.created_at.strftime("%b %d, %Y") %></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
-
 </section>

@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@site_user = User.find_by(id: params[:id])
-		# @voted_on_works = @site_user.get_all_voted_works # TODO: dependency?? See view
+		@site_user = User.find_by(id: params[:id]) # QUESTION: dependency?? See view
+		# @voted_on_works = @site_user.get_all_voted_works
 	end
 
 	private
