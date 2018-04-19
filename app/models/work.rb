@@ -57,7 +57,7 @@ class Work < ApplicationRecord
 
 	def remove_white_space_from_title_description_creator
 		[title, description, creator].each do |work_attribute|
-			work_attribute.squish! if !work_attribute.nil? # TODO:
+			work_attribute.squish! if !work_attribute.nil?
 		end
 	end
 

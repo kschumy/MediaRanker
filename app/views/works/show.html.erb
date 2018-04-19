@@ -9,7 +9,7 @@
 	<%= link_to "Back to media ranks", root_path, class: "button" %>
 	<%= link_to "Edit", edit_work_path, class: "button" %>
 	<%= link_to "Upvote", work_votes_path(@work.id), method: :post, class: "button" %>
-	<%= link_to "Delete", work_path,  method: :delete, class: "button alert", confirm: 'Are you sure?' %>
+	<%= link_to "Delete", work_path(@work),  method: :delete, class: "button alert", data: { confirm: 'Are you sure?' } %>
 </section>
 
 <section class="voted-by-users">
